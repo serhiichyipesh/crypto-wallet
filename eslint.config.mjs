@@ -1,7 +1,6 @@
 import pluginJs from '@eslint/js';
 import pluginQuery from '@tanstack/eslint-plugin-query';
 import pluginReact from 'eslint-plugin-react';
-import globals from './globals';
 import tseslint from 'typescript-eslint';
 
 /** @type {import('eslint').Linter.Config[]} */
