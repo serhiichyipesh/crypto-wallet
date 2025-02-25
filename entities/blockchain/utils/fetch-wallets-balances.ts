@@ -1,6 +1,5 @@
 import {
   BLOCKCHAIN_CONFIG,
-  checkIsDeployed,
   getTokenBalance,
   getUsdValue,
   TBalanceByToken,

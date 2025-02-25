@@ -1,10 +1,8 @@
-import { createWallet, importWallet, useWallets } from '@/entities/blockchain';
-import { View } from 'react-native';
+import { importWallet, useWallets } from '@/entities/blockchain';
 import { Button, Card, Text } from '@ui-kitten/components';
 import React, { useState } from 'react';
 import { useRouter } from 'expo-router';
 import { ScreenContainer } from '@/shared/ui';
-import * as Clipboard from 'expo-clipboard';
 import to from 'await-to-js';
 import { getTextFromClipboard } from '@/shared/utils';
 
@@ -13,7 +11,6 @@ const ImportWalletPage = () => {
   const router = useRouter();
 
   const [seedPhrase, setSeedPhrase] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
 
   const handleImportWallet = () => {
     if (!seedPhrase) return;
@@ -33,7 +30,7 @@ const ImportWalletPage = () => {
   const handleInsertSeedPhrase = async () => {
     const [err, string] = await to(getTextFromClipboard());
 
-    if (err) return;
+    if (err || !string) return;
 
     setSeedPhrase(string);
   };

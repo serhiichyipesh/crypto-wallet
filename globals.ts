@@ -1,3 +1,6 @@
+/* eslint-disable */
+// @ts-nocheck
+
 import { Buffer } from 'buffer';
 import 'react-native-get-random-values';
 import * as Crypto from 'expo-crypto';

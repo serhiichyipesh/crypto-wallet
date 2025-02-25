@@ -1,18 +1,9 @@
 import { ScreenContainer } from '@/shared/ui';
 import React, { useState } from 'react';
-import {
-  Button,
-  Card,
-  Divider,
-  Layout,
-  Text,
-  useTheme,
-  ViewPager,
-} from '@ui-kitten/components';
+import { Card, Divider, Text, useTheme } from '@ui-kitten/components';
 import QRCodeStyled from 'react-native-qrcode-styled';
 import { trimHex, useWallets } from '@/entities/blockchain';
-import { Dimensions, FlatList, StyleSheet, View } from 'react-native';
-import Ionicons from '@expo/vector-icons/Ionicons';
+import { FlatList, View } from 'react-native';
 
 const DepositScreen = () => {
   const theme = useTheme();

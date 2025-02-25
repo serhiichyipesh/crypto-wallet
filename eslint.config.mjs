@@ -2,16 +2,17 @@ import pluginJs from '@eslint/js';
 import pluginQuery from '@tanstack/eslint-plugin-query';
 import pluginReact from 'eslint-plugin-react';
 import tseslint from 'typescript-eslint';
+import eslintPluginPrettier from 'eslint-plugin-prettier';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
-  { files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'] },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
   {
     plugins: {
       '@tanstack/query': pluginQuery,
+      prettier: eslintPluginPrettier,
     },
     rules: {
       '@tanstack/query/exhaustive-deps': 'error',
@@ -30,7 +31,13 @@ export default [
           message: 'Please import from `@ui-kitten/components` instead.',
         },
       ],
+      'no-multiple-empty-lines': ['error', { max: 1, maxEOF: 0, maxBOF: 0 }],
+      'prettier/prettier': 'error',
+      'no-trailing-spaces': 'error',
     },
+  },
+  {
+    ignores: ['babel.config.js', 'metro.config.js', 'tailwind.config.js'],
   },
   {
     files: ['app-env.d.ts'],
