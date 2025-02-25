@@ -1,0 +1,4 @@
+git add .
+pnpm format
+pnpm tsc
+git add .
