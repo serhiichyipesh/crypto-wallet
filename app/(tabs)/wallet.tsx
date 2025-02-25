@@ -6,23 +6,18 @@ import {
   trimHex,
   useWallets,
 } from '@/entities/blockchain';
-import { FlatList, View } from 'react-native';
+import { FlatList } from 'react-native';
 import Feather from '@expo/vector-icons/Feather';
 import { router, useFocusEffect } from 'expo-router';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import to from 'await-to-js';
-import { ethers } from 'ethers';
 
 export default function Tab() {
   const { wallets } = useWallets();
   const theme = useTheme();
 
-  const {
-    data: walletsBalances,
-    isLoading,
-    refetch,
-  } = useQuery({
+  const { data: walletsBalances, refetch } = useQuery({
     queryKey: ['walletsBalances'],
     queryFn: async () => {
       const [err, res] = await to(fetchWalletsBalances());
@@ -67,7 +62,10 @@ export default function Tab() {
                 >
                   Deposit
                 </Button>
-                <Button onPress={() => router.push('../send')} className="flex-1">
+                <Button
+                  onPress={() => router.push('../send')}
+                  className="flex-1"
+                >
                   Send
                 </Button>
               </Layout>

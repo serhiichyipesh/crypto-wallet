@@ -1,5 +1,4 @@
-import { createWallet, importWallet, useWallets } from '@/entities/blockchain';
-import { View } from 'react-native';
+import { createWallet, useWallets } from '@/entities/blockchain';
 import { Button } from '@ui-kitten/components';
 import { useState } from 'react';
 import { useRouter } from 'expo-router';
@@ -14,20 +13,8 @@ const CreateWalletPage = () => {
     throw new Error('crypto.getRandomValues is not defined');
   }
 
-  const [seedPhrase, setSeedPhrase] = useState('');
-
   const handleImportWallet = () => {
     router.push('/wallet/import');
-    // if (!seedPhrase) return;
-    //
-    // setSeedPhrase('');
-    //
-    // const wallet = importWallet(seedPhrase);
-    //
-    // if (!wallet) throw new Error('Wallet not found!');
-    //
-    // addWallet(wallet);
-    // router.push('/');
   };
 
   const [isLoading, setIsLoading] = useState(false);
@@ -45,7 +32,9 @@ const CreateWalletPage = () => {
 
   return (
     <ScreenContainer className="justify-end gap-4 px-8">
-      <Button onPress={handleCreateWallet}>Create wallet</Button>
+      <Button onPress={handleCreateWallet}>
+        {isLoading ? 'Creating wallet...' : 'Create wallet'}
+      </Button>
       <Button onPress={handleImportWallet}>Import wallet</Button>
     </ScreenContainer>
   );
