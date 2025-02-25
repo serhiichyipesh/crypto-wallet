@@ -1,8 +1,8 @@
 import { create } from 'zustand';
-import { persist, createJSONStorage, PersistStorage } from 'zustand/middleware';
+import { createJSONStorage, persist, PersistStorage } from 'zustand/middleware';
 import * as SecureStore from 'expo-secure-store';
 import { Address, Hex } from 'viem';
-import { createSelectors } from '@/shared/utils';
+import { createSelectors } from 'shared/lib';
 
 const secureStorage = createJSONStorage(() => ({
   getItem: async (key) => {

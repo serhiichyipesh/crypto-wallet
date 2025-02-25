@@ -1,13 +1,12 @@
 import { router, useLocalSearchParams } from 'expo-router';
 import React, { useState } from 'react';
-import { Button, Card, Text } from '@ui-kitten/components';
+import { Button, Card, Input, Text } from '@ui-kitten/components';
 import { ScreenContainer } from '@/shared/ui';
 import { useWallets } from '@/entities/blockchain';
 import { Address } from 'viem';
-import { Input } from '@ui-kitten/components';
 import { Keyboard, Pressable } from 'react-native';
 import Feather from '@expo/vector-icons/Feather';
-import { copyToClipboard } from '@/shared/utils';
+import { copyToClipboard } from 'shared/lib';
 
 const EditPage = () => {
   const { address } = useLocalSearchParams<{ address: Address }>();

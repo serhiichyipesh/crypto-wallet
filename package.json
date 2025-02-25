@@ -6,8 +6,8 @@
     "ios": "expo run:ios",
     "start": "expo start",
     "prebuild": "expo prebuild",
-    "lint": "npx eslint . && prettier -c \"**/*.{js,jsx,ts,tsx,json}\"",
-    "format": "prettier . --write && npx eslint . --fix",
+    "lint": "npx eslint . && npx steiger . && prettier -c \"**/*.{js,jsx,ts,tsx,json}\"",
+    "format": "prettier . --write && npx eslint . --fix && npx steiger . --fix",
     "web": "expo start --web",
     "tsc": "tsc --noEmit"
   },
@@ -70,6 +70,7 @@
     "eslint-plugin-react": "^7.37.4",
     "prettier": "^3.5.1",
     "prettier-plugin-tailwindcss": "^0.5.14",
+    "steiger": "^0.5.5",
     "tailwindcss": "^3.4.17",
     "typescript": "~5.3.3",
     "typescript-eslint": "^8.24.1"

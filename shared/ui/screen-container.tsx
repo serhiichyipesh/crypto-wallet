@@ -1,7 +1,7 @@
 import { Layout, LayoutProps } from '@ui-kitten/components';
 import { memo, PropsWithChildren } from 'react';
 
-import { cn } from '../utils';
+import { cn } from '../lib';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export const ScreenContainer = memo(

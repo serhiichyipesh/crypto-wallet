@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'expo-router';
 import { ScreenContainer } from '@/shared/ui';
 import to from 'await-to-js';
-import { getTextFromClipboard } from '@/shared/utils';
+import { getTextFromClipboard } from 'shared/lib';
 
 const ImportWalletPage = () => {
   const { addWallet, checkIfWalletAdded } = useWallets();
