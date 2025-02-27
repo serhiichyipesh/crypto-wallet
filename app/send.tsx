@@ -1,11 +1,10 @@
-import { ScreenContainer } from '@/shared/ui';
+import { ScreenContainer, ScreenTitle } from '@shared/ui';
 import React from 'react';
-import { Text } from '@ui-kitten/components';
 
 const SendScreen = () => {
   return (
     <ScreenContainer>
-      <Text>Send</Text>
+      <ScreenTitle title="Send" withBackButton />
     </ScreenContainer>
   );
 };

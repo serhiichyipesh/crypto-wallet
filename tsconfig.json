@@ -5,10 +5,11 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@/shared/*": ["shared/*"],
-      "@/entities/*": ["entities/*"],
-      "@/globals": ["globals.ts"],
-      "@/app/*": ["app/*"]
+      "@shared/*": ["shared/*"],
+      "@entities/*": ["entities/*"],
+      "@globals": ["globals.ts"],
+      "@app/*": ["app/*"],
+      "@widgets/*": ["widgets/*"]
     }
   }
 }

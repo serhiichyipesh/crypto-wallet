@@ -1,6 +1,6 @@
 import to from 'await-to-js';
 import { Address, PublicClient } from 'viem';
-import { ERC20_TOKEN_BALANCEOF_ABI } from '@/entities/blockchain';
+import { ERC20_TOKEN_BALANCEOF_ABI } from '@entities/blockchain';
 
 export const getTokenBalance = async (
   client: PublicClient,

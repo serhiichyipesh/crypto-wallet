@@ -1,17 +1,11 @@
-import { createWallet, useWallets } from '@/entities/blockchain';
-import { Button } from '@ui-kitten/components';
+import { createWallet, useWallets } from '@entities/blockchain';
 import { useState } from 'react';
 import { useRouter } from 'expo-router';
-import { ScreenContainer } from '@/shared/ui';
-import '../../globals';
+import { Button, ScreenContainer, ScreenTitle } from '@shared/ui';
 
 const CreateWalletPage = () => {
-  const { addWallet } = useWallets();
+  const { addWallet, hasAnyWallet } = useWallets();
   const router = useRouter();
-
-  if (!crypto.getRandomValues) {
-    throw new Error('crypto.getRandomValues is not defined');
-  }
 
   const handleImportWallet = () => {
     router.push('/wallet/import');
@@ -31,9 +25,15 @@ const CreateWalletPage = () => {
   };
 
   return (
-    <ScreenContainer className="justify-end gap-4 px-8">
-      <Button onPress={handleCreateWallet}>
-        {isLoading ? 'Creating wallet...' : 'Create wallet'}
+    <ScreenContainer className="gap-4 px-8">
+      <ScreenTitle title="Add Wallet" withBackButton={hasAnyWallet} />
+
+      <Button
+        isLoading={isLoading}
+        onPress={handleCreateWallet}
+        className="mt-auto"
+      >
+        Create wallet
       </Button>
       <Button onPress={handleImportWallet}>Import wallet</Button>
     </ScreenContainer>

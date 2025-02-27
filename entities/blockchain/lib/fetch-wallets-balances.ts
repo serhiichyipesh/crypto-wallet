@@ -5,7 +5,7 @@ import {
   TBalanceByToken,
   TBalancesByChain,
   useWalletsStore,
-} from '@/entities/blockchain';
+} from '@entities/blockchain';
 import to from 'await-to-js';
 
 export const fetchWalletsBalances = async () => {

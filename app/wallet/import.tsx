@@ -1,8 +1,8 @@
-import { importWallet, useWallets } from '@/entities/blockchain';
+import { importWallet, useWallets } from '@entities/blockchain';
 import { Button, Card, Text } from '@ui-kitten/components';
 import React, { useState } from 'react';
 import { useRouter } from 'expo-router';
-import { ScreenContainer } from '@/shared/ui';
+import { ScreenContainer } from '@shared/ui';
 import to from 'await-to-js';
 import { getTextFromClipboard } from 'shared/lib';
 

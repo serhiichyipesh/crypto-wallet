@@ -3,7 +3,7 @@ import {
   TSupportedAssetSymbolTestnet,
   TSupportedChainIdTestnet,
   TSupportedChainTestnet,
-} from '@/entities/blockchain';
+} from '@entities/blockchain';
 import { arbitrumSepolia, sepolia } from 'viem/chains';
 
 export const SUPPORTED_CHAINS_TESTNET = [arbitrumSepolia, sepolia] as const;

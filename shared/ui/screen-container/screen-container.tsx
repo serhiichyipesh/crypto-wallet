@@ -1,7 +1,7 @@
 import { Layout, LayoutProps } from '@ui-kitten/components';
 import { memo, PropsWithChildren } from 'react';
 
-import { cn } from '../lib';
+import { cn } from '@shared/lib';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export const ScreenContainer = memo(
@@ -18,8 +18,9 @@ export const ScreenContainer = memo(
         style={{
           paddingBottom: insets.bottom || 32,
           paddingTop: insets.top || 56,
+          paddingHorizontal: 16,
         }}
-        className={cn('flex flex-1 px-6', className)}
+        className={cn('flex flex-1', className)}
         {...props}
       >
         {children}
@@ -27,3 +28,5 @@ export const ScreenContainer = memo(
     );
   }
 );
+
+ScreenContainer.displayName = 'ScreenContainer';

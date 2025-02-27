@@ -1,4 +1,4 @@
-import { SUPPORTED_CHAINS_TESTNET } from '@/entities/blockchain';
+import { SUPPORTED_CHAINS_TESTNET } from '@entities/blockchain';
 
 export type TSupportedChainTestnet = (typeof SUPPORTED_CHAINS_TESTNET)[number];
 

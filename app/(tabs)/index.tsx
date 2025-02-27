@@ -1,26 +1,85 @@
-import { ScreenContainer } from '@/shared/ui';
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { Layout, Text, useTheme } from '@ui-kitten/components';
-import { Link } from 'expo-router';
+import { Card, Layout } from '@ui-kitten/components';
+
+import { Button, Row, ScreenContainer, Typography } from '@shared/ui';
+import { trimHex, useBalances, useWallets } from '@entities/blockchain';
+import { FlatList, RefreshControl } from 'react-native';
+import Feather from '@expo/vector-icons/Feather';
+import { router, useFocusEffect } from 'expo-router';
+import { useCallback } from 'react';
+import { COLORS_MAP, SELECTED_CURRENCY } from '@shared/config';
+import { WalletsListHeader } from '@widgets/wallets-tab';
 
 export default function Tab() {
-  const theme = useTheme();
+  const { wallets } = useWallets();
+
+  const {
+    isRefreshingBalance,
+    refreshBalances,
+    refetchBalances,
+    walletsBalances,
+  } = useBalances();
+
+  useFocusEffect(
+    useCallback(() => {
+      refetchBalances();
+    }, [refetchBalances])
+  );
 
   return (
-    <ScreenContainer className="items-center pt-16">
-      <Layout className="my-2 flex w-full flex-row">
-        <Text>Home s</Text>
-
-        <Link href="/settings">
-          <Ionicons
-            name="settings"
-            size={24}
-            color={theme['color-primary-500']}
+    <ScreenContainer>
+      <FlatList
+        contentContainerClassName="gap-2"
+        data={wallets}
+        ListHeaderComponent={WalletsListHeader}
+        refreshControl={
+          <RefreshControl
+            progressViewOffset={-10}
+            refreshing={isRefreshingBalance}
+            tintColor={COLORS_MAP['color-primary-400']}
+            onRefresh={refreshBalances}
           />
-        </Link>
+        }
+        renderItem={({ item }) => {
+          const balance = (
+            walletsBalances?.[item.address].totalBalanceUsd || 0
+          ).toString();
 
-        <Link href="/wallet/create">Add wallet</Link>
-      </Layout>
+          return (
+            <Card
+              header={
+                <Layout>
+                  <Row className="justify-between">
+                    <Typography category="s1">{item.name}</Typography>
+
+                    <Button
+                      accessoryLeft={
+                        <Feather
+                          name="edit-2"
+                          size={12}
+                          color={COLORS_MAP['color-primary-500']}
+                        />
+                      }
+                      size="tiny"
+                      appearance="outline"
+                      onPress={() => router.push(`wallet/edit/${item.address}`)}
+                    >
+                      Edit
+                    </Button>
+                  </Row>
+                </Layout>
+              }
+            >
+              <Row className="justify-between">
+                <Typography>{trimHex(item.address, 10, 10)}</Typography>
+
+                <Typography>
+                  {balance} {SELECTED_CURRENCY}
+                </Typography>
+              </Row>
+            </Card>
+          );
+        }}
+      />
     </ScreenContainer>
   );
 }

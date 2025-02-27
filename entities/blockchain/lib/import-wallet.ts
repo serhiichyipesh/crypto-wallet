@@ -1,5 +1,5 @@
 import { mnemonicToAccount } from 'viem/accounts';
-import { getPrivateKey } from '@/entities/blockchain';
+import { getPrivateKey } from '@entities/blockchain';
 
 export const importWallet = (mnemonic: string) => {
   const account = mnemonicToAccount(mnemonic);
