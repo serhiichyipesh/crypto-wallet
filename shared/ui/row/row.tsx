@@ -1,14 +1,16 @@
 import { memo } from 'react';
-import { cn } from '@shared/lib';
-import { View, ViewProps } from 'react-native';
+import { ViewProps } from 'react-native';
+import { Layout } from '@ui-kitten/components';
 
 type TRowProps = ViewProps & { className?: string };
 
-export const Row = memo(({ className, ...rest }: TRowProps) => {
+export const Row = memo(({ ...rest }: TRowProps) => {
   return (
-    <View
-      style={{ flexDirection: 'row' }}
-      className={cn('item-center justify-center', className)}
+    <Layout
+      style={{
+        backgroundColor: 'transparent',
+        flexDirection: 'row',
+      }}
       {...rest}
     />
   );

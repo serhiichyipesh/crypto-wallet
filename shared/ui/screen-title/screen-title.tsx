@@ -1,6 +1,5 @@
 import { memo } from 'react';
-import { Button, Typography } from '@shared/ui';
-import { View } from 'react-native';
+import { Button, Row, Typography } from '@shared/ui';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router } from 'expo-router';
 import { useTheme } from '@ui-kitten/components';
@@ -16,7 +15,7 @@ export const ScreenTitle = memo(
 
     if (withBackButton) {
       return (
-        <View className="flex-row items-center gap-4">
+        <Row className="gap-4">
           <Button size="small" onPress={() => router.back()} appearance="ghost">
             {() => (
               <Ionicons
@@ -27,7 +26,7 @@ export const ScreenTitle = memo(
             )}
           </Button>
           <Typography category="h2">{title}</Typography>
-        </View>
+        </Row>
       );
     }
 

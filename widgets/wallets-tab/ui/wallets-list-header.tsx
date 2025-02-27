@@ -21,13 +21,13 @@ export const WalletsListHeader = () => {
     <>
       <ScreenTitle title="Total balance" />
 
-      <Typography category="h6">
+      <Typography category="h6" className="mb-4">
         {totalBalance} {SELECTED_CURRENCY}
       </Typography>
 
-      <Separator className="my-4" bg="color-basic-700" />
+      <Separator />
 
-      <Row className="mb-2 gap-4">
+      <Row className="mb-2 mt-2  gap-4">
         <Button className="flex-1" onPress={() => router.push('../deposit')}>
           {() => (
             <MaterialCommunityIcons

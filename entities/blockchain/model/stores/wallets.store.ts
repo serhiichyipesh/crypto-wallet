@@ -17,7 +17,7 @@ const secureStorage = createJSONStorage(() => ({
   },
 }));
 
-type TWallet = {
+export type TWallet = {
   name: string;
   address: Address;
   mnemonic: string;

@@ -1,4 +1,4 @@
-import { Card, Layout } from '@ui-kitten/components';
+import { Card } from '@ui-kitten/components';
 
 import { Button, Row, ScreenContainer, Typography } from '@shared/ui';
 import { trimHex, useBalances, useWallets } from '@entities/blockchain';
@@ -46,28 +46,26 @@ export default function Tab() {
 
           return (
             <Card
-              header={
-                <Layout>
-                  <Row className="justify-between">
-                    <Typography category="s1">{item.name}</Typography>
+              header={() => (
+                <Row className="justify-between px-6 py-3">
+                  <Typography category="s1">{item.name}</Typography>
 
-                    <Button
-                      accessoryLeft={
-                        <Feather
-                          name="edit-2"
-                          size={12}
-                          color={COLORS_MAP['color-primary-500']}
-                        />
-                      }
-                      size="tiny"
-                      appearance="outline"
-                      onPress={() => router.push(`wallet/edit/${item.address}`)}
-                    >
-                      Edit
-                    </Button>
-                  </Row>
-                </Layout>
-              }
+                  <Button
+                    accessoryLeft={
+                      <Feather
+                        name="edit-2"
+                        size={12}
+                        color={COLORS_MAP['color-primary-500']}
+                      />
+                    }
+                    size="tiny"
+                    appearance="outline"
+                    onPress={() => router.push(`wallet/edit/${item.address}`)}
+                  >
+                    Edit
+                  </Button>
+                </Row>
+              )}
             >
               <Row className="justify-between">
                 <Typography>{trimHex(item.address, 10, 10)}</Typography>
