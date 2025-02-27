@@ -37,7 +37,12 @@ export default [
     },
   },
   {
-    ignores: ['babel.config.js', 'metro.config.js', 'tailwind.config.js'],
+    ignores: [
+      'babel.config.js',
+      'metro.config.js',
+      'tailwind.config.js',
+      '.storybook/storybook.requires.ts',
+    ],
   },
   {
     files: ['app-env.d.ts'],

@@ -7,15 +7,16 @@ import { Stack } from 'expo-router/stack';
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect } from 'react';
 
-import { theme } from '@/shared/config';
+import { OPEN_STORYBOOK, theme } from '@shared/config';
 import '../global.css';
-import { useWallets } from '@/entities/blockchain';
+import { useWallets } from '@entities/blockchain';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { router } from 'expo-router';
+import { default as StoryBookApp } from '.././.storybook';
 
 export const queryClient = new QueryClient();
 
-export default function Layout() {
+function Layout() {
   const { hasAnyWallet } = useWallets();
 
   useEffect(() => {
@@ -46,3 +47,15 @@ export default function Layout() {
     </ApplicationProvider>
   );
 }
+
+let App = Layout;
+
+if (OPEN_STORYBOOK) {
+  App = () => (
+    <ApplicationProvider {...eva} theme={{ ...eva.dark, ...theme }}>
+      <StoryBookApp />
+    </ApplicationProvider>
+  );
+}
+
+export default App;
