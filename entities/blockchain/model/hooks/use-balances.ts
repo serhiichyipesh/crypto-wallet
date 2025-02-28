@@ -26,8 +26,6 @@ export const useBalances = () => {
     },
   });
 
-  console.log(walletsBalances);
-
   const totalBalance = Object.values(walletsBalances || {}).reduce(
     (acc, current) => acc + current.totalBalanceUsd,
     0
