@@ -41,7 +41,7 @@ export default function Tab() {
         }
         renderItem={({ item }) => {
           const balance = (
-            walletsBalances?.[item.address].totalBalanceUsd || 0
+            walletsBalances?.[item.address]?.totalBalanceUsd || 0
           ).toString();
 
           return (

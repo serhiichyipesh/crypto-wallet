@@ -86,8 +86,8 @@ importers:
         specifier: ^4.1.23
         version: 4.1.23(react-native-reanimated@3.16.7(@babel/core@7.26.9)(react-native@0.76.7(@babel/core@7.26.9)(@babel/preset-env@7.26.9(@babel/core@7.26.9))(@types/react@18.3.18)(bufferutil@4.0.9)(react@18.3.1)(utf-8-validate@5.0.10))(react@18.3.1))(react-native-safe-area-context@4.12.0(react-native@0.76.7(@babel/core@7.26.9)(@babel/preset-env@7.26.9(@babel/core@7.26.9))(@types/react@18.3.18)(bufferutil@4.0.9)(react@18.3.1)(utf-8-validate@5.0.10))(react@18.3.1))(react-native-svg@15.11.2(react-native@0.76.7(@babel/core@7.26.9)(@babel/preset-env@7.26.9(@babel/core@7.26.9))(@types/react@18.3.18)(bufferutil@4.0.9)(react@18.3.1)(utf-8-validate@5.0.10))(react@18.3.1))(react-native@0.76.7(@babel/core@7.26.9)(@babel/preset-env@7.26.9(@babel/core@7.26.9))(@types/react@18.3.18)(bufferutil@4.0.9)(react@18.3.1)(utf-8-validate@5.0.10))(react@18.3.1)(tailwindcss@3.4.17)
       permissionless:
-        specifier: ^0.2.34
-        version: 0.2.34(viem@2.23.5(bufferutil@4.0.9)(typescript@5.3.3)(utf-8-validate@5.0.10)(zod@3.24.2))(webauthn-p256@0.0.10)
+        specifier: ^0.2.23
+        version: 0.2.23(viem@2.23.5(bufferutil@4.0.9)(typescript@5.3.3)(utf-8-validate@5.0.10)(zod@3.24.2))(webauthn-p256@0.0.10)
       react:
         specifier: 18.3.1
         version: 18.3.1
@@ -8987,10 +8987,10 @@ packages:
       }
     engines: { node: '>=0.12' }
 
-  permissionless@0.2.34:
+  permissionless@0.2.23:
     resolution:
       {
-        integrity: sha512-N9injuAHLIJ88hKBGixYSgIUqDAnfhbCPYH+fMdx2vC0D70NtsNT+IUma0XlhQe+AmZRUSXdPyaA6Fz4Kt/aCg==,
+        integrity: sha512-J/Z8Tvgv/FKcbu9DMDYu/QLkssnlOAbQ6yXPqKsRywdB+x4FT5PDHVkwBdK46t6QnDy8r4zU9G1EmlTSmZA2kA==,
       }
     peerDependencies:
       viem: ^2.21.54
@@ -18699,7 +18699,7 @@ snapshots:
       safe-buffer: 5.2.1
       sha.js: 2.4.11
 
-  permissionless@0.2.34(viem@2.23.5(bufferutil@4.0.9)(typescript@5.3.3)(utf-8-validate@5.0.10)(zod@3.24.2))(webauthn-p256@0.0.10):
+  permissionless@0.2.23(viem@2.23.5(bufferutil@4.0.9)(typescript@5.3.3)(utf-8-validate@5.0.10)(zod@3.24.2))(webauthn-p256@0.0.10):
     dependencies:
       viem: 2.23.5(bufferutil@4.0.9)(typescript@5.3.3)(utf-8-validate@5.0.10)(zod@3.24.2)
       webauthn-p256: 0.0.10

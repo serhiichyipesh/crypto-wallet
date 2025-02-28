@@ -5,3 +5,6 @@ export { trimHex } from './trim-hex';
 export { getTokenBalance } from './get-token-balance';
 export { getUsdValue } from './get-usd-value';
 export { fetchWalletsBalances } from './fetch-wallets-balances';
+export { sendTransaction } from './send-transaction';
+export { initTransfer } from './init-transfer';
+export { mint } from './mint';
