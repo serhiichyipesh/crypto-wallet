@@ -4,9 +4,10 @@ import {
   Row,
   ScreenContainer,
   ScreenTitle,
+  SelectCard,
   Typography,
 } from '@shared/ui';
-import { Card, Layout } from '@ui-kitten/components';
+import { Layout } from '@ui-kitten/components';
 import { Hex, isAddress } from 'viem';
 import {
   SEND_STEPS,
@@ -132,9 +133,10 @@ const SendScreen = () => {
   return (
     <ScreenContainer>
       <ScreenTitle title="Send" withBackButton />
-      <Card
+      <SelectCard
+        bgColor="color-basic-900"
+        border="color-basic-700"
         className="bottom-20 my-auto"
-        status="primary"
         footer={
           <Layout>
             <Row className="gap-8">
@@ -201,7 +203,7 @@ const SendScreen = () => {
         }
       >
         {stepComponent}
-      </Card>
+      </SelectCard>
     </ScreenContainer>
   );
 };

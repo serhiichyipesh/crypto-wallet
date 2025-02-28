@@ -1,8 +1,7 @@
 import React, { useMemo } from 'react';
 import { View } from 'react-native';
-import { Card } from '@ui-kitten/components';
-import { Row, Separator, Typography } from '@shared/ui';
-import { AntDesign, Entypo } from '@expo/vector-icons';
+import { Row, SelectCard, Separator, Typography } from '@shared/ui';
+import { AntDesign } from '@expo/vector-icons';
 import {
   COLORS_MAP,
   NETWORK_FEE,
@@ -10,6 +9,8 @@ import {
   SELECTED_CURRENCY_SIGN,
 } from '@shared/config';
 import { trimHex, useSend } from '@entities/blockchain';
+import { stepTitleProps } from '@widgets/send-transaction/model';
+import Entypo from '@expo/vector-icons/Entypo';
 
 export const ConfirmTransactionStep = () => {
   const {
@@ -30,10 +31,8 @@ export const ConfirmTransactionStep = () => {
 
   return (
     <View>
-      <Typography category="h6" className="mb-4">
-        Confirm Transaction
-      </Typography>
-      <Card>
+      <Typography {...stepTitleProps}>Confirm Transaction</Typography>
+      <SelectCard border="color-basic-700">
         <Row className="mb-4 items-center justify-between">
           <Row className="items-center gap-2">
             <Entypo
@@ -60,19 +59,19 @@ export const ConfirmTransactionStep = () => {
             <Typography>{trimHex(destinationAddress, 4, 4)}</Typography>
           </View>
         </Row>
-        <View className="gap-2">
+        <View className="gap-3">
           <Row className="justify-between">
-            <Typography>Network</Typography>
-            <Typography>{selectedNetwork.name}</Typography>
+            <Typography category="s1">Network</Typography>
+            <Typography category="s1">{selectedNetwork.name}</Typography>
           </Row>
           <Row className="justify-between">
-            <Typography>Asset</Typography>
-            <Typography>{selectedAsset.symbol}</Typography>
+            <Typography category="s1">Asset</Typography>
+            <Typography category="s1">{selectedAsset.symbol}</Typography>
           </Row>
           <Row className="justify-between">
-            <Typography>Amount</Typography>
+            <Typography category="s1">Amount</Typography>
             <Row className="gap-1">
-              <Typography>
+              <Typography category="s1">
                 {amountToSend} {selectedAsset.symbol}
               </Typography>
               <Typography {...mutedTextProp}>
@@ -95,7 +94,7 @@ export const ConfirmTransactionStep = () => {
           </Row>
         </View>
 
-        <Separator className="my-4" bg="color-basic-1100" />
+        <Separator className="my-4" bg="color-basic-700" />
         <Row className="items-center justify-between">
           <Typography category="h6">Total</Typography>
           <Row className="gap-1">
@@ -108,7 +107,14 @@ export const ConfirmTransactionStep = () => {
             </Typography>
           </Row>
         </Row>
-      </Card>
+      </SelectCard>
+
+      <SelectCard className="mt-3" border="color-warning-600">
+        <Typography status="warning" category="s1">
+          Please verify all transaction details. Once confirmed, this
+          transaction cannot be reversed.
+        </Typography>
+      </SelectCard>
     </View>
   );
 };

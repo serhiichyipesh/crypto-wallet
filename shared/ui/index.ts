@@ -7,3 +7,5 @@ export { ScreenTitle } from './screen-title';
 export { CopyButton } from './copy-button';
 export { CloseModalButton } from './close-modal-button';
 export { Row } from './row';
+export { SelectCard } from './select-card';
+export { Avatar } from './avatar';

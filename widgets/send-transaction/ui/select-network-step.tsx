@@ -1,27 +1,40 @@
 import React from 'react';
 import { FlatList } from 'react-native';
-import { Card } from '@ui-kitten/components';
-import { Typography } from '@shared/ui';
+import { Avatar, Row, SelectCard, Typography } from '@shared/ui';
 import { SUPPORTED_CHAINS_TESTNET, useSend } from '@entities/blockchain';
+import { secondaryTextProps } from '@shared/config';
+import {
+  basicIconColor,
+  stepTitleProps,
+} from '@widgets/send-transaction/model';
+import Entypo from '@expo/vector-icons/Entypo';
 
 export const SelectNetworkStep = () => {
   const { selectedNetwork, setField } = useSend();
 
   return (
     <>
-      <Typography category="h6" className="mb-4">
-        Select Network
+      <Typography {...stepTitleProps}>Select Network</Typography>
+
+      <Typography {...secondaryTextProps}>
+        Select a blockchain network:
       </Typography>
       <FlatList
         data={SUPPORTED_CHAINS_TESTNET}
         contentContainerClassName="gap-2 mt-4"
         renderItem={({ item }) => (
-          <Card
+          <SelectCard
             onPress={() => setField('selectedNetwork', item)}
-            status={selectedNetwork.id === item.id ? 'primary' : undefined}
+            isSelected={selectedNetwork.id === item.id}
           >
-            <Typography category="s1">{item.name}</Typography>
-          </Card>
+            <Row className="items-center gap-2">
+              <Avatar>
+                <Entypo {...basicIconColor} name="network" size={20} />
+              </Avatar>
+
+              <Typography category="s1">{item.name}</Typography>
+            </Row>
+          </SelectCard>
         )}
       />
     </>

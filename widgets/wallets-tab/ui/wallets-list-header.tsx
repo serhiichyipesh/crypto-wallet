@@ -3,7 +3,11 @@ import { router } from 'expo-router';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import Entypo from '@expo/vector-icons/Entypo';
-import { COLORS_MAP, SELECTED_CURRENCY } from '@shared/config';
+import {
+  COLORS_MAP,
+  SELECTED_CURRENCY,
+  SELECTED_CURRENCY_RATE,
+} from '@shared/config';
 import { useBalances } from '@entities/blockchain';
 import { useMemo } from 'react';
 
@@ -21,8 +25,8 @@ export const WalletsListHeader = () => {
     <>
       <ScreenTitle title="Total balance" />
 
-      <Typography category="h6" className="mb-4">
-        {totalBalance} {SELECTED_CURRENCY}
+      <Typography category="h4" className="mb-4 mt-2">
+        {+totalBalance * SELECTED_CURRENCY_RATE} {SELECTED_CURRENCY}
       </Typography>
 
       <Separator />
