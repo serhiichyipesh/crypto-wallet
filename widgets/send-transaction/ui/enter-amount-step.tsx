@@ -2,8 +2,9 @@ import React from 'react';
 import { View } from 'react-native';
 import { Button, Input } from '@ui-kitten/components';
 import { Row, Typography } from '@shared/ui';
-import { SELECTED_CURRENCY, SELECTED_CURRENCY_RATE } from '@shared/config';
+import { secondaryTextProps } from '@shared/config';
 import { useBalances, useSend } from '@entities/blockchain';
+import { stepTitleProps } from '@widgets/send-transaction/model';
 
 export const EnterAmountStep = () => {
   const {
@@ -21,25 +22,41 @@ export const EnterAmountStep = () => {
     assetSymbol: selectedAsset!.symbol,
   });
 
+  if (!balance) return null;
+
+  const { symbol, balanceUsd } = balance;
+
   return (
     <>
-      <Row className="mb-4">
-        <Typography category="h6">
-          Balance: {String((balance?.balanceUsd || 0) * SELECTED_CURRENCY_RATE)}{' '}
-          {SELECTED_CURRENCY}
+      <Typography {...stepTitleProps}>Enter Amount</Typography>
+
+      <Row className="mb-4 justify-between">
+        <Typography {...secondaryTextProps}>Amount</Typography>
+        <Typography {...secondaryTextProps}>
+          Balance: {balanceUsd} {symbol}
         </Typography>
       </Row>
+
       <Row className="items-center gap-4">
         <View className="flex-1">
           <Input
             value={amountToSend}
             onChangeText={(text) => setField('amountToSend', text)}
-            className="flex-grow"
-            placeholder="Enter amount"
+            placeholder="0.00"
+            accessoryRight={() => (
+              <Typography
+                {...secondaryTextProps}
+                category="p2"
+                className="right-1"
+              >
+                {symbol}
+              </Typography>
+            )}
           />
         </View>
         <Button
           size="small"
+          className="h-full"
           onPress={() => setField('amountToSend', String(balance?.balanceUsd))}
         >
           MAX
