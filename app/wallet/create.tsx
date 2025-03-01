@@ -25,7 +25,7 @@ const CreateWalletPage = () => {
   };
 
   return (
-    <ScreenContainer className="gap-4 px-8">
+    <ScreenContainer className="gap-4">
       <ScreenTitle title="Add Wallet" withBackButton={hasAnyWallet} />
 
       <Button

@@ -1,12 +1,13 @@
-import { Address, createPublicClient, http, PublicClient } from 'viem';
+import { createPublicClient, http, PublicClient } from 'viem';
 import {
   TSupportedAssetSymbolTestnet,
+  TSupportedAssetTestnet,
   TSupportedChainIdTestnet,
   TSupportedChainTestnet,
 } from '@entities/blockchain';
 import { arbitrumSepolia, sepolia } from 'viem/chains';
 
-export const SUPPORTED_CHAINS_TESTNET = [arbitrumSepolia, sepolia] as const;
+export const SUPPORTED_CHAINS_TESTNET = [sepolia, arbitrumSepolia] as const;
 
 const SUPPORTED_CHAINS_TESTNET_MAP: Record<
   TSupportedChainIdTestnet,
@@ -18,26 +19,19 @@ const SUPPORTED_CHAINS_TESTNET_MAP: Record<
 
 export const SUPPORTED_ASSETS: Record<
   TSupportedChainIdTestnet,
-  Record<
-    TSupportedAssetSymbolTestnet,
-    {
-      symbol: TSupportedAssetSymbolTestnet;
-      address: Address;
-      decimals: number;
-    }
-  >
+  Record<TSupportedAssetSymbolTestnet, TSupportedAssetTestnet>
 > = {
   [arbitrumSepolia.id]: {
-    '6TEST': {
-      symbol: '6TEST',
-      address: '0x3870419Ba2BBf0127060bCB37f69A1b1C090992B',
+    PIM: {
+      symbol: 'PIM',
+      address: '0xFC3e86566895Fb007c6A0d3809eb2827DF94F751',
       decimals: 6,
     },
   },
   [sepolia.id]: {
-    '6TEST': {
-      symbol: '6TEST',
-      address: '0x3870419Ba2BBf0127060bCB37f69A1b1C090992B',
+    PIM: {
+      symbol: 'PIM',
+      address: '0xFC3e86566895Fb007c6A0d3809eb2827DF94F751',
       decimals: 6,
     },
   },

@@ -42,6 +42,7 @@ export default [
       'metro.config.js',
       'tailwind.config.js',
       '.storybook/storybook.requires.ts',
+      'shared/lib/scripts/*',
     ],
   },
   {

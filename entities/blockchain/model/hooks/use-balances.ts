@@ -45,15 +45,15 @@ export const useBalances = () => {
   }: {
     walletAddress: Address;
     networkId: TSupportedChainIdTestnet;
-    assetSymbol: TSupportedAssetSymbolTestnet;
+    assetSymbol: TSupportedAssetSymbolTestnet | undefined;
   }): TBalanceByToken | null => {
-    if (!walletsBalances) return null;
+    if (!walletsBalances || !assetSymbol) return null;
 
-    const balances = walletsBalances[walletAddress].balancesByChain;
+    const balances = walletsBalances[walletAddress]?.balancesByChain;
 
     return (
       balances
-        .find((balance) => balance?.chainId === networkId)
+        ?.find((balance) => balance?.chainId === networkId)
         ?.balancesByToken.find((token) => token.symbol === assetSymbol) || null
     );
   };

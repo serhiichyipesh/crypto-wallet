@@ -1,11 +1,12 @@
 import { router, useLocalSearchParams } from 'expo-router';
 import React, { useMemo, useState } from 'react';
-import { Button, Card, Input } from '@ui-kitten/components';
+import { Button, Input } from '@ui-kitten/components';
 import {
   CloseModalButton,
   CopyButton,
   Row,
   ScreenContainer,
+  SelectCard,
   Separator,
   Typography,
 } from '@shared/ui';
@@ -21,7 +22,9 @@ import {
 import { MaterialIcons } from '@expo/vector-icons';
 
 const EditPage = () => {
-  const { address } = useLocalSearchParams<{ address: Address }>();
+  const { address } = useLocalSearchParams<{
+    address: Address;
+  }>();
 
   const { getWalletInfo, renameWallet, deleteWallet } = useWallets();
 
@@ -76,7 +79,7 @@ const EditPage = () => {
         onPress={() => Keyboard.dismiss()}
       >
         <Typography
-          category="s1"
+          category="h6"
           className="mb-2"
           status={isWalletNameValid ? 'basic' : 'danger'}
         >
@@ -106,8 +109,8 @@ const EditPage = () => {
 
         <Separator className="my-3" />
 
-        <Row className="justify-between">
-          <Typography category="s1">Address</Typography>
+        <Row className="items-center justify-between">
+          <Typography category="h6">Address</Typography>
 
           <Typography
             style={{ color: COLORS_MAP['color-basic-600'] }}
@@ -117,8 +120,8 @@ const EditPage = () => {
           </Typography>
         </Row>
 
-        <Card
-          status={showFullAddress ? 'primary' : 'basic'}
+        <SelectCard
+          isSelected={showFullAddress}
           className="mb-4 mt-2"
           footer={<CopyButton stringToCopy={address} />}
           onPress={() => setShowFullAddress((prev) => !prev)}
@@ -126,10 +129,10 @@ const EditPage = () => {
           <Typography category="s1">
             {showFullAddress ? address : trimHex(address, 10, 10)}
           </Typography>
-        </Card>
+        </SelectCard>
 
-        <Row className="justify-between">
-          <Typography category="s1">Seed Phrase</Typography>
+        <Row className="items-center justify-between">
+          <Typography category="h6">Seed Phrase</Typography>
 
           <Typography
             category="c1"
@@ -139,24 +142,25 @@ const EditPage = () => {
           </Typography>
         </Row>
 
-        <Card
-          status={showSeedPhrase ? 'primary' : 'basic'}
+        <SelectCard
+          isSelected={showSeedPhrase}
           className="mt-2"
           footer={<CopyButton stringToCopy={mnemonic} />}
           onPress={() => setShowSeedPhrase((prev) => !prev)}
         >
           <Typography>{showSeedPhrase ? mnemonic : '*********'}</Typography>
-        </Card>
+        </SelectCard>
       </Pressable>
 
       <Button
         disabled={!isWalletNameValid}
         className="mb-2 mt-auto"
         onPress={handleSave}
+        appearance="ghost"
       >
         Save
       </Button>
-      <Button appearance="ghost" status="danger" onPress={handleDelete}>
+      <Button status="danger" onPress={handleDelete}>
         Delete
       </Button>
     </ScreenContainer>

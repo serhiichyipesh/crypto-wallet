@@ -9,9 +9,10 @@
     "lint": "npx eslint . && npx steiger . && prettier -c \"**/*.{js,jsx,ts,tsx,json}\"",
     "format": "prettier . --write && npx eslint . --fix && npx steiger . --fix",
     "web": "expo start --web",
-    "tsc": "tsc --noEmit",
+    "tsc": "tsc",
     "prepare": "husky",
-    "storybook-generate": "sb-rn-get-stories"
+    "storybook-generate": "sb-rn-get-stories",
+    "postinstall": "node shared/lib/scripts/remove-js-extensions.js && node shared/lib/scripts/patch-toOwner.js"
   },
   "dependencies": {
     "@babel/runtime": "^7.26.9",
@@ -40,7 +41,7 @@
     "expo-status-bar": "~2.0.1",
     "fastestsmallesttextencoderdecoder": "^1.0.22",
     "nativewind": "^4.1.23",
-    "permissionless": "^0.2.34",
+    "permissionless": "^0.2.23",
     "react": "18.3.1",
     "react-native": "0.76.7",
     "react-native-crypto": "^2.2.0",
