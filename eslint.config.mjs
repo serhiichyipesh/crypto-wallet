@@ -43,6 +43,8 @@ export default [
       'tailwind.config.js',
       '.storybook/storybook.requires.ts',
       'shared/lib/scripts/*',
+      'jest.setup.js',
+      'jest.config.js',
     ],
   },
   {
