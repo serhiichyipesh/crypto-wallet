@@ -1,12 +1,11 @@
 import { initTransfer } from './init-transfer';
 import { sepolia } from 'viem/chains';
-
-const TEST_PRIVATE_KEY = process.env.EXPO_PUBLIC_TEST_PRIVATE_KEY;
+import { API_KEY, API_URL, TEST_PRIVATE_KEY } from '@shared/config';
 
 describe('initTransfer (integration)', () => {
   it('should initialize transfer with real env variables', async () => {
-    expect(process.env.EXPO_PUBLIC_PIMLICO_API_URL).toBeDefined();
-    expect(process.env.EXPO_PUBLIC_PIMLICO_API_KEY).toBeDefined();
+    expect(API_URL).toBeDefined();
+    expect(API_KEY).toBeDefined();
 
     const result = await initTransfer({
       chain: sepolia,

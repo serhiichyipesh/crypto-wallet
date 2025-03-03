@@ -1,4 +1,5 @@
 import { trimHex } from './trim-hex';
+import { TEST_WALLET } from '@shared/config';
 
 const trimStart = 7;
 const trimEnd = 7;
@@ -8,12 +9,10 @@ const lengthAfterTrim = trimStart + dotsLength + trimEnd;
 
 describe('trimHex string', () => {
   it('should trim hex string', () => {
-    const inputString =
-      '0x1234123321232131231212312312312312323131233123123123';
-    const string = trimHex(inputString, trimStart, trimEnd);
+    const string = trimHex(TEST_WALLET, trimStart, trimEnd);
 
     expect(string.length).toBe(lengthAfterTrim);
-    expect(string).not.toBe(inputString);
+    expect(string).not.toBe(TEST_WALLET);
   });
 
   it('should return input string', () => {
