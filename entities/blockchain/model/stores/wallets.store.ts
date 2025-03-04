@@ -1,8 +1,14 @@
-import { create } from 'zustand';
-import { createJSONStorage, persist, PersistStorage } from 'zustand/middleware';
+import { create, StateCreator } from 'zustand';
+import {
+  createJSONStorage,
+  persist as _persist,
+  PersistOptions,
+  PersistStorage,
+} from 'zustand/middleware';
 import * as SecureStore from 'expo-secure-store';
 import { Address, Hex } from 'viem';
 import { createSelectors } from 'shared/lib';
+import { IS_DETOX_ENV } from '@shared/config';
 
 const secureStorage = createJSONStorage(() => ({
   getItem: async (key) => {
@@ -37,13 +43,24 @@ type TWalletsStore = {
 
 const generateWalletName = (existingNames: string[]) => {
   let index = 1;
-
   while (existingNames.includes(`wallet${index}`)) {
     index++;
   }
-
   return `wallet${index}`;
 };
+
+type PersistFn = <T>(
+  config: StateCreator<T>,
+  options: PersistOptions<T>
+) => StateCreator<T>;
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const dummyPersist: PersistFn = (config, _options) => {
+  return config;
+};
+
+// @ts-expect-error - make dummy store for detox testing
+const persist: PersistFn = IS_DETOX_ENV ? dummyPersist : _persist;
 
 const walletsStoreBase = create(
   persist<TWalletsStore>(
@@ -53,15 +70,25 @@ const walletsStoreBase = create(
         set((state) => {
           const existingNames = state.wallets.map((w) => w.name);
           const newName = generateWalletName(existingNames);
-
           return {
-            wallets: [...state.wallets, { ...wallet, name: newName }],
+            wallets: [
+              ...state.wallets,
+              {
+                ...wallet,
+                name: newName,
+              },
+            ],
           };
         }),
       renameWallet: (address, newName) =>
         set((state) => ({
           wallets: state.wallets.map((wallet) =>
-            wallet.address === address ? { ...wallet, name: newName } : wallet
+            wallet.address === address
+              ? {
+                  ...wallet,
+                  name: newName,
+                }
+              : wallet
           ),
         })),
       getWalletInfo: (address) =>

@@ -1,6 +1,5 @@
 import { importWallet } from './import-wallet';
-
-const TEST_MNEMONIC = process.env.EXPO_PUBLIC_TEST_MNEMONIC;
+import { TEST_MNEMONIC } from '@shared/config';
 
 const WRONG_TEST_MNEMONIC = 'test';
 

@@ -45,6 +45,7 @@ export default [
       'shared/lib/scripts/*',
       'jest.setup.js',
       'jest.config.js',
+      'shared/config/app-constants.ts',
     ],
   },
   {

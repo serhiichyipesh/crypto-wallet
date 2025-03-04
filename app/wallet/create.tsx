@@ -32,10 +32,13 @@ const CreateWalletPage = () => {
         isLoading={isLoading}
         onPress={handleCreateWallet}
         className="mt-auto"
+        testID="createWalletBtn"
       >
         Create wallet
       </Button>
-      <Button onPress={handleImportWallet}>Import wallet</Button>
+      <Button onPress={handleImportWallet} testID="go-to-import">
+        Import wallet
+      </Button>
     </ScreenContainer>
   );
 };

@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const MIN_WALLET_NAME_LENGTH = 3;
 export const MAX_WALLET_NAME_LENGTH = 10;
 
@@ -15,3 +16,4 @@ export const TEST_PRIVATE_KEY = process.env.EXPO_PUBLIC_TEST_PRIVATE_KEY;
 export const TEST_DESTINATION_WALLET =
   process.env.EXPO_PUBLIC_TEST_DESTINATION_WALLET;
 export const TEST_HASH = '0x1231231231231231231231';
+export const IS_DETOX_ENV = true;

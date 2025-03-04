@@ -1,7 +1,8 @@
 import { BLOCKCHAIN_CONFIG, getTokenBalance } from '@entities/blockchain';
 import { sepolia } from 'viem/chains';
+import { TEST_WALLET } from '@shared/config';
 
-const walletAddress = process.env.EXPO_PUBLIC_TEST_WALLET;
+const walletAddress = TEST_WALLET;
 const chainId = sepolia.id;
 const publicClient = BLOCKCHAIN_CONFIG.PUBLIC_CLIENT_BY_CHAIN_MAP[chainId];
 const tokenAddress = BLOCKCHAIN_CONFIG.SUPPORTED_ASSETS[chainId].PIM.address;
