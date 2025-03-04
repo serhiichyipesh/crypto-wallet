@@ -1,4 +1,5 @@
 git add .
 pnpm format
 pnpm tsc
+pnpm test
 git add .

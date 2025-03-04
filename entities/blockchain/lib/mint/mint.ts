@@ -12,16 +12,19 @@ export const mint = async ({
   asset,
   privateKey,
   destinationAddress,
+  amountToSend,
 }: TSendTransferPayload) => {
   const chainId = chain.id;
   const tokenAddress = gasTokenAddresses[chainId][asset.symbol];
+  const transferAmountBigInt = BigInt(amountToSend * 10 ** asset.decimals);
+
   const calls = [
     {
       to: tokenAddress,
       value: BigInt(0),
       data: encodeFunctionData({
         abi: ERC20_TOKEN_MINT_ABI,
-        args: [destinationAddress, BigInt(10000000000)],
+        args: [destinationAddress, transferAmountBigInt],
       }),
     },
   ];

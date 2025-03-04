@@ -9,3 +9,4 @@ export { CloseModalButton } from './close-modal-button';
 export { Row } from './row';
 export { SelectCard } from './select-card';
 export { Avatar } from './avatar';
+export { AppProvider } from './app-provider';
