@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 export const MIN_WALLET_NAME_LENGTH = 3;
 export const MAX_WALLET_NAME_LENGTH = 10;

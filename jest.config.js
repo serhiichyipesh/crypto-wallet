@@ -11,4 +11,5 @@ module.exports = {
     '\\.css$': 'identity-obj-proxy',
   },
   extensionsToTreatAsEsm: ['.ts', '.tsx'],
+  testPathIgnorePatterns: ['<rootDir>/e2e/'],
 };
